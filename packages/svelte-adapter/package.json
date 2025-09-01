@@ -1,0 +1,47 @@
+{
+  "name": "@ferroframe/svelte-adapter",
+  "version": "0.1.0",
+  "description": "Svelte adapter for FerroFrame TUI framework",
+  "type": "module",
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./compiler": "./src/compiler.js",
+    "./adapter": "./src/adapter.js",
+    "./stores": "./src/stores.js"
+  },
+  "scripts": {
+    "test": "mocha tests/**/*.test.js",
+    "test:watch": "mocha tests/**/*.test.js --watch",
+    "test:coverage": "c8 mocha tests/**/*.test.js",
+    "lint": "eslint src tests",
+    "format": "prettier --write src tests"
+  },
+  "keywords": [
+    "svelte",
+    "tui",
+    "adapter",
+    "ferroframe"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "svelte": "^4.2.0",
+    "magic-string": "^0.30.0"
+  },
+  "peerDependencies": {
+    "@ferroframe/core": "workspace:*",
+    "@ferroframe/components": "workspace:*"
+  },
+  "devDependencies": {
+    "@ferroframe/core": "workspace:*",
+    "@ferroframe/components": "workspace:*",
+    "mocha": "^10.2.0",
+    "chai": "^5.0.0",
+    "sinon": "^17.0.0",
+    "c8": "^9.0.0"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

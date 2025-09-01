@@ -1,0 +1,19 @@
+{
+  "name": "ferroframe-svelte-todo",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node src/main.js",
+    "start": "node src/main.js"
+  },
+  "dependencies": {
+    "@ferroframe/core": "workspace:*",
+    "@ferroframe/components": "workspace:*",
+    "@ferroframe/svelte-adapter": "workspace:*",
+    "svelte": "^4.2.0"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

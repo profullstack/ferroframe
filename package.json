@@ -12,9 +12,11 @@
     "dev": "node scripts/dev.js",
     "build": "node scripts/build.js",
     "test": "pnpm -r test",
+    "watch": "node scripts/watch.js",
     "lint": "eslint . --ext .js,.svelte",
     "format": "prettier --write .",
-    "create-app": "node scripts/create-app.js"
+    "create-app": "node scripts/create-app.js",
+    "postinstall": "chmod +x scripts/*.js"
   },
   "keywords": [
     "tui",
