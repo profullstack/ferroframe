@@ -3,6 +3,9 @@
   "version": "0.2.0",
   "description": "A Svelte-host TUI framework for Node.js - Build terminal interfaces with the power of Svelte",
   "type": "module",
+  "bin": {
+    "ferro": "./bin/ferro.js"
+  },
   "engines": {
     "node": ">=20.0.0",
     "pnpm": ">=8.0.0"
@@ -15,7 +18,7 @@
     "lint": "eslint . --ext .js,.svelte",
     "format": "prettier --write .",
     "create-app": "node scripts/create-app.js",
-    "postinstall": "chmod +x scripts/*.js"
+    "postinstall": "chmod +x scripts/*.js && chmod +x bin/*.js"
   },
   "keywords": [
     "tui",
