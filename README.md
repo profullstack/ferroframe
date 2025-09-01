@@ -12,63 +12,191 @@ FerroFrame brings the declarative, component-based approach of Svelte to termina
 - **Component Library**: Built-in components for common TUI patterns
 - **Developer Experience**: Hot reload, debugging tools, and great DX
 - **Cross-Platform**: Works on Windows, macOS, and Linux terminals
+- **CLI Tool**: Powerful `ferro` command for all operations
 
 ## 🚀 Quick Start
 
 ```bash
+# Install FerroFrame CLI globally
+pnpm add -g ferroframe
+
 # Create a new FerroFrame app
-pnpm create ferroframe my-tui-app
+ferro new my-tui-app
+
+# Navigate to your app
 cd my-tui-app
-pnpm install
-pnpm dev
+
+# Start development server
+ferro dev
 ```
 
 ## 📦 Installation
 
+### Global CLI Installation
 ```bash
+# Install the FerroFrame CLI globally
+pnpm add -g ferroframe
+
+# Verify installation
+ferro --version
+```
+
+### Project Dependencies
+```bash
+# Add to existing project
 pnpm add @ferroframe/core @ferroframe/components
+
+# For Svelte integration
+pnpm add @ferroframe/svelte-adapter svelte
+```
+
+## 🛠️ CLI Commands
+
+The `ferro` CLI provides a unified interface for all FerroFrame operations:
+
+### Creating Apps
+
+```bash
+# Create a new FerroFrame app (interactive)
+ferro new my-app
+
+# Create with specific template
+ferro create my-svelte-app
+# Then choose: 1) Basic TUI App or 2) Svelte TUI App
+```
+
+### Development
+
+```bash
+# Start development server with hot reload
+ferro dev                        # Shows help
+ferro dev core                   # Watch core package
+ferro dev components             # Watch components package
+ferro dev svelte-adapter         # Watch svelte-adapter
+ferro dev example hello-world    # Run hello-world example
+ferro dev example svelte-todo    # Run svelte-todo example
+```
+
+### Building & Testing
+
+```bash
+# Build all packages for production
+ferro build
+
+# Run tests
+ferro test
+
+# Watch files and run tests automatically
+ferro watch
+
+# Lint your code
+ferro lint
+
+# Format code with Prettier
+ferro format
+```
+
+### Help & Info
+
+```bash
+# Show all available commands
+ferro help
+ferro --help
+ferro -h
+
+# Show version
+ferro version
+ferro --version
+ferro -v
 ```
 
 ## 🎯 Basic Example
+
+### Using Components Directly
+
+```javascript
+// main.js
+import { FerroHost } from '@ferroframe/core';
+import { Box, Text, Input, Button } from '@ferroframe/components';
+
+const app = Box({
+  display: 'flex',
+  flexDirection: 'column',
+  padding: 2,
+  gap: 1,
+  children: [
+    Text({
+      children: 'Welcome to FerroFrame! 🎨',
+      bold: true,
+      color: 'cyan'
+    }),
+    Input({
+      placeholder: 'Enter your name...',
+      onSubmit: (value) => console.log(`Hello, ${value}!`)
+    }),
+    Button({
+      children: 'Click me!',
+      variant: 'primary',
+      onClick: () => console.log('Button clicked!')
+    })
+  ]
+});
+
+const host = new FerroHost();
+await host.mount(app);
+```
+
+### Using Svelte Components
 
 ```svelte
 <!-- App.svelte -->
 <script>
   import { Box, Text, Input, Button } from '@ferroframe/components';
+  import { createFormStore } from '@ferroframe/svelte-adapter';
   
-  let name = '';
-  let submitted = false;
+  const form = createFormStore({
+    name: '',
+    email: ''
+  });
   
   function handleSubmit() {
-    submitted = true;
+    console.log('Form submitted:', $form);
   }
 </script>
 
-<Box direction="column" padding={1}>
+<Box direction="column" padding={2}>
   <Text bold color="cyan">Welcome to FerroFrame!</Text>
   
-  {#if !submitted}
-    <Box direction="row" gap={1}>
-      <Text>Name:</Text>
-      <Input bind:value={name} placeholder="Enter your name" />
-    </Box>
-    
-    <Button on:click={handleSubmit} disabled={!name}>
-      Submit
-    </Button>
-  {:else}
-    <Text color="green">Hello, {name}! 👋</Text>
-  {/if}
+  <Box direction="row" gap={1}>
+    <Input 
+      placeholder="Name" 
+      value={$form.name}
+      onChange={(v) => form.setFieldValue('name', v)}
+    />
+    <Input 
+      placeholder="Email" 
+      value={$form.email}
+      onChange={(v) => form.setFieldValue('email', v)}
+    />
+  </Box>
+  
+  <Button onClick={handleSubmit} variant="primary">
+    Submit
+  </Button>
 </Box>
 ```
 
 ```javascript
 // main.js
 import { FerroHost } from '@ferroframe/core';
+import { SvelteAdapter } from '@ferroframe/svelte-adapter';
 import App from './App.svelte';
 
+const adapter = new SvelteAdapter();
+const app = await adapter.mount(App);
+
 const host = new FerroHost();
-await host.mount(App);
+await host.mount(app);
 ```
 
 ## 🏗️ Architecture
@@ -90,14 +218,12 @@ FerroFrame uses a host-based architecture where:
 
 ## 🧩 Built-in Components
 
-- `Box` - Flexbox container
-- `Text` - Styled text rendering
-- `Input` - Text input field
-- `Button` - Interactive button
-- `List` - Selectable list
-- `Table` - Data tables
-- `Progress` - Progress bars
-- `Spinner` - Loading indicators
+- `Box` - Flexbox container with borders and padding
+- `Text` - Styled text rendering with colors
+- `Input` - Text input field with cursor management
+- `Button` - Interactive button with variants
+- `List` - Scrollable, selectable list
+- More components coming soon!
 
 ## 🛠️ Development
 
@@ -110,25 +236,95 @@ cd ferroframe
 pnpm install
 
 # Run tests
+ferro test
+# or
 pnpm test
 
-# Build packages
+# Build all packages
+ferro build
+# or
 pnpm build
 
-# Run examples
-cd examples/hello-world
-pnpm dev
+# Watch mode for development
+ferro watch
+# or
+pnpm watch
+
+# Run specific example
+ferro dev example hello-world
+ferro dev example svelte-todo
 ```
 
 ## 📖 Examples
 
 Check out the [examples](examples/) directory for:
 
-- [Hello World](examples/hello-world) - Basic setup
-- [Todo App](examples/todo-app) - Interactive todo list
-- [Dashboard](examples/dashboard) - Multi-panel dashboard
-- [Forms](examples/forms) - Form validation and handling
-- [File Explorer](examples/file-explorer) - File system navigation
+- [Hello World](examples/hello-world) - Basic interactive counter
+- [Svelte Todo](examples/svelte-todo) - Todo app with Svelte stores
+
+Run examples using the CLI:
+```bash
+# Run hello-world example
+ferro dev example hello-world
+
+# Run svelte-todo example  
+ferro dev example svelte-todo
+```
+
+## 🎨 Styling & Theming
+
+FerroFrame supports comprehensive styling options:
+
+```javascript
+import { Box, Text } from '@ferroframe/components';
+
+Box({
+  // Flexbox properties
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  alignItems: 'center',
+  gap: 2,
+  
+  // Box model
+  padding: 2,
+  margin: 1,
+  
+  // Borders
+  border: 'single',
+  borderColor: 'cyan',
+  
+  // Sizing
+  width: 50,
+  height: 20,
+  
+  children: [
+    Text({
+      children: 'Styled Text',
+      color: 'green',
+      backgroundColor: 'black',
+      bold: true,
+      underline: true
+    })
+  ]
+});
+```
+
+## 🚦 Project Status
+
+**Current Version**: 0.2.0  
+**Status**: ✅ Production Ready - All core features implemented
+
+### Completed Features:
+- ✅ Core TUI framework with host and renderer
+- ✅ Complete flexbox layout engine
+- ✅ Component system with lifecycle management
+- ✅ Built-in component library
+- ✅ Svelte adapter with reactive stores
+- ✅ CLI tool with `ferro` command
+- ✅ Development tools (hot reload, watch mode)
+- ✅ Project scaffolding
+- ✅ Working examples
 
 ## 🤝 Contributing
 
@@ -146,4 +342,4 @@ MIT © Profullstack, Inc.
 
 ---
 
-**Status**: 🚧 Under active development - MVP in progress
+**Ready to build your next TUI?** Get started with `ferro new my-app` 🚀
