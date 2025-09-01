@@ -1,6 +1,6 @@
 {
   "name": "@profullstack/ferroframe",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "description": "A Svelte-host TUI framework for Node.js - Build terminal interfaces with the power of Svelte",
   "type": "module",
   "bin": {
