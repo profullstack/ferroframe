@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "description": "A Svelte-host TUI framework for Node.js - Build terminal interfaces with the power of Svelte",
   "type": "module",
-  "private": true,
   "engines": {
     "node": ">=20.0.0",
     "pnpm": ">=8.0.0"
