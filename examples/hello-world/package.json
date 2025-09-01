@@ -1,0 +1,17 @@
+{
+  "name": "ferroframe-hello-world",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node src/main.js",
+    "start": "node src/main.js"
+  },
+  "dependencies": {
+    "@ferroframe/core": "workspace:*",
+    "@ferroframe/components": "workspace:*"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

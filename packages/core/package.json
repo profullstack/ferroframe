@@ -1,0 +1,44 @@
+{
+  "name": "@ferroframe/core",
+  "version": "0.1.0",
+  "description": "Core TUI framework for FerroFrame",
+  "type": "module",
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./host": "./src/host.js",
+    "./renderer": "./src/renderer.js",
+    "./layout": "./src/layout.js",
+    "./component": "./src/component.js",
+    "./input": "./src/input.js",
+    "./utils/*": "./src/utils/*.js"
+  },
+  "scripts": {
+    "test": "mocha tests/**/*.test.js",
+    "test:watch": "mocha tests/**/*.test.js --watch",
+    "test:coverage": "c8 mocha tests/**/*.test.js",
+    "lint": "eslint src tests",
+    "format": "prettier --write src tests"
+  },
+  "keywords": [
+    "tui",
+    "terminal",
+    "framework",
+    "ferroframe"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^5.3.0",
+    "blessed": "^0.1.81"
+  },
+  "devDependencies": {
+    "mocha": "^10.2.0",
+    "chai": "^5.0.0",
+    "sinon": "^17.0.0",
+    "c8": "^9.0.0"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

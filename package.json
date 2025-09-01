@@ -1,0 +1,47 @@
+{
+  "name": "ferroframe",
+  "version": "0.1.0",
+  "description": "A Svelte-host TUI framework for Node.js - Build terminal interfaces with the power of Svelte",
+  "type": "module",
+  "private": true,
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=8.0.0"
+  },
+  "scripts": {
+    "dev": "node scripts/dev.js",
+    "build": "node scripts/build.js",
+    "test": "pnpm -r test",
+    "lint": "eslint . --ext .js,.svelte",
+    "format": "prettier --write .",
+    "create-app": "node scripts/create-app.js"
+  },
+  "keywords": [
+    "tui",
+    "terminal",
+    "cli",
+    "svelte",
+    "framework",
+    "console",
+    "interface",
+    "node"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@eslint/js": "^9.0.0",
+    "eslint": "^9.0.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-svelte": "^2.35.0",
+    "prettier": "^3.2.0",
+    "prettier-plugin-svelte": "^3.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/ferroframe.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/ferroframe/issues"
+  },
+  "homepage": "https://github.com/yourusername/ferroframe#readme"
+}

@@ -1,0 +1,45 @@
+{
+  "name": "@ferroframe/components",
+  "version": "0.1.0",
+  "description": "Built-in component library for FerroFrame",
+  "type": "module",
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./Text": "./src/Text.js",
+    "./Box": "./src/Box.js",
+    "./Input": "./src/Input.js",
+    "./Button": "./src/Button.js",
+    "./List": "./src/List.js",
+    "./styles": "./src/styles.js"
+  },
+  "scripts": {
+    "test": "mocha tests/**/*.test.js",
+    "test:watch": "mocha tests/**/*.test.js --watch",
+    "test:coverage": "c8 mocha tests/**/*.test.js",
+    "lint": "eslint src tests",
+    "format": "prettier --write src tests"
+  },
+  "keywords": [
+    "tui",
+    "components",
+    "ferroframe",
+    "terminal",
+    "ui"
+  ],
+  "author": "",
+  "license": "MIT",
+  "peerDependencies": {
+    "@ferroframe/core": "workspace:*"
+  },
+  "devDependencies": {
+    "@ferroframe/core": "workspace:*",
+    "mocha": "^10.2.0",
+    "chai": "^5.0.0",
+    "sinon": "^17.0.0",
+    "c8": "^9.0.0"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

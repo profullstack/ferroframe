@@ -1,0 +1,46 @@
+{
+  "env": {
+    "es2024": true,
+    "node": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "prettier"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 2024,
+    "sourceType": "module"
+  },
+  "rules": {
+    "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
+    "no-console": "off",
+    "prefer-const": "error",
+    "no-var": "error",
+    "object-shorthand": "error",
+    "prefer-arrow-callback": "error",
+    "prefer-template": "error",
+    "prefer-destructuring": ["error", { "object": true, "array": false }],
+    "no-param-reassign": "error",
+    "no-shadow": "error",
+    "eqeqeq": ["error", "always"],
+    "curly": ["error", "all"],
+    "arrow-body-style": ["error", "as-needed"],
+    "arrow-parens": ["error", "always"],
+    "no-multiple-empty-lines": ["error", { "max": 1 }],
+    "padding-line-between-statements": [
+      "error",
+      { "blankLine": "always", "prev": "*", "next": "return" },
+      { "blankLine": "always", "prev": ["const", "let", "var"], "next": "*" },
+      { "blankLine": "any", "prev": ["const", "let", "var"], "next": ["const", "let", "var"] }
+    ]
+  },
+  "overrides": [
+    {
+      "files": ["*.svelte"],
+      "processor": "svelte/svelte",
+      "rules": {
+        "no-undef": "off"
+      }
+    }
+  ]
+}
