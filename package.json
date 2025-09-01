@@ -1,6 +1,6 @@
 {
   "name": "ferroframe",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A Svelte-host TUI framework for Node.js - Build terminal interfaces with the power of Svelte",
   "type": "module",
   "engines": {
