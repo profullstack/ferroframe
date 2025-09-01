@@ -210,11 +210,18 @@ FerroFrame uses a host-based architecture where:
 
 ## 📚 Documentation
 
-- [Getting Started](docs/getting-started.md)
-- [API Reference](docs/api-reference.md)
-- [Component Library](docs/components.md)
-- [Layout System](docs/layout-system.md)
-- [Examples](docs/examples.md)
+Documentation is coming soon. For now, please refer to:
+- The examples in the `examples/` directory
+- The source code in `packages/` for implementation details
+- The CLI help: `ferro help`
+
+<!-- Future documentation:
+- Getting Started Guide
+- API Reference
+- Component Library Documentation
+- Layout System Guide
+- More Examples
+-->
 
 ## 🧩 Built-in Components
 
@@ -328,7 +335,7 @@ Box({
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please read our [Contributing Guide](CONTRIBUTING.md) for details.
+Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## 📄 License
 
