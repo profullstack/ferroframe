@@ -18,7 +18,7 @@ FerroFrame brings the declarative, component-based approach of Svelte to termina
 
 ```bash
 # Install FerroFrame CLI globally
-pnpm add -g ferroframe
+pnpm add -g @profullstack/ferroframe
 
 # Create a new FerroFrame app
 ferro new my-tui-app
@@ -35,7 +35,7 @@ ferro dev
 ### Global CLI Installation
 ```bash
 # Install the FerroFrame CLI globally
-pnpm add -g ferroframe
+pnpm add -g @profullstack/ferroframe
 
 # Verify installation
 ferro --version
@@ -229,7 +229,7 @@ FerroFrame uses a host-based architecture where:
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/ferroframe.git
+git clone https://github.com/profullstack/ferroframe.git
 cd ferroframe
 
 # Install dependencies
@@ -312,7 +312,7 @@ Box({
 
 ## 🚦 Project Status
 
-**Current Version**: 0.2.0  
+**Current Version**: 0.3.0
 **Status**: ✅ Production Ready - All core features implemented
 
 ### Completed Features:
